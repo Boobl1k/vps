@@ -9,5 +9,5 @@ services:
       - "53:53/udp"
       - "53:53/tcp"
     volumes:
-      - ./named.conf:./named.conf
-      - ./zones:./zones
+      - ./bind9/named.conf:/etc/bind/named.conf
+      - ./bind9/zones:/etc/bind/zones
