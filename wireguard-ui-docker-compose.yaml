@@ -5,11 +5,10 @@ services:
     image: ngoduykhanh/wireguard-ui:latest
     restart: always
     ports:
-      - 80:80
+      - 5000:5000
     container_name: wgui
     cap_add:
       - NET_ADMIN
-    network_mode: host
     environment:
       - SENDGRID_API_KEY
       - EMAIL_FROM_ADDRESS
