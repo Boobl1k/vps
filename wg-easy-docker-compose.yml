@@ -11,7 +11,7 @@ services:
     image: ghcr.io/wg-easy/wg-easy:15.0.0-beta.11
     container_name: wg-easy
     networks:
-      wg:
+      vpn:
         ipv4_address: 10.42.42.42
         ipv6_address: fdcc:ad94:bacf:61a3::2a
     volumes:
@@ -35,11 +35,5 @@ services:
       - "admin.kutak:10.42.42.42"
 
 networks:
-  wg:
-    driver: bridge
-    enable_ipv6: true
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.42.42.0/24
-        - subnet: fdcc:ad94:bacf:61a3::/64
+  vpn:
+    external: true

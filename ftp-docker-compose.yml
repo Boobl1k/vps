@@ -1,0 +1,22 @@
+services:
+  ftp:
+    image: stilliard/pure-ftpd:hardened
+    container_name: ftp_server
+    restart: unless-stopped
+    #ports:
+    #  - "21:21"
+    #  - "30000-30050:30000-30050"
+    environment:
+      PUBLICHOST: "10.42.42.52"
+      FTP_USER_NAME: user
+      FTP_USER_PASS: pass
+      FTP_USER_HOME: /home/ftpuser
+    volumes:
+      - ./ftp:/home/ftpuser
+    networks:
+      vpn:
+        ipv4_address: 10.42.42.52
+
+networks:
+  vpn:
+    external: true
