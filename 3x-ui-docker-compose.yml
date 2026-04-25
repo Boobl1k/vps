@@ -1,0 +1,16 @@
+services:
+  3xui:
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: 3xui_app
+    # hostname: yourhostname <- optional
+    volumes:
+      - ./3x_db:/etc/x-ui/
+      - ./cert/:/root/cert/
+    environment:
+      XRAY_VMESS_AEAD_FORCED: "false"
+      XUI_ENABLE_FAIL2BAN: "true"
+    tty: true
+    ports:
+      - "58076:58076"
+      - "127.0.0.1:2053:2053"
+    restart: unless-stopped
