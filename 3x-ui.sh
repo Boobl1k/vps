@@ -15,7 +15,7 @@ sudo openssl req -x509 -newkey rsa:2048 \
 
 mkdir -p ./3x-ui/3x_db
 sudo cp ./3x-ui/x-ui.db.original ./3x-ui/3x_db/x-ui.db
-chmod 644 ./3x-ui/3x_db/x-ui.db
+sudo chmod 644 ./3x-ui/3x_db/x-ui.db
 sudo chown root:root ./3x-ui/3x_db/x-ui.db
 sudo chown root:root ./3x-ui/3x_db/
 
