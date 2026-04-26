@@ -13,4 +13,8 @@ sudo openssl req -x509 -newkey rsa:2048 \
   -nodes \
   -subj "/C=/ST=/L=/O=/OU=/CN=${SERVER_IP}"
 
+cp ./3x-ui/x-ui.db.original ./3x-ui/x-ui.db
+chmod 644 ./3x-ui/x-ui.db
+chown root:root ./3x-ui/x-ui.db
+
 docker compose -f 3x-ui-docker-compose.yml up -d
