@@ -1,4 +1,5 @@
 db/
 ftp/
 cert/
-3x_db/
+3x-ui/3x_db/
+.env

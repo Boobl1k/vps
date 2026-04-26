@@ -1,3 +1,7 @@
+set -a
+source .env
+set +a
+
 echo "Server IP: ${SERVER_IP}"
 
 mkdir -p ./cert
