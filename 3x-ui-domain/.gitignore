@@ -1,0 +1,4 @@
+3x_db/
+.env
+cert/
+copy_certs.sh

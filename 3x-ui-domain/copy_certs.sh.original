@@ -1,0 +1,15 @@
+#!/bin/bash
+
+CERT_DIR="#{CERT_DIR}"
+DOMAIN="#{DOMAIN}"
+
+set -a
+source .env
+set +a
+
+mkdir -p $CERT_DIR
+
+cp /etc/letsencrypt/live/$DOMAIN/fullchain.pem $CERT_DIR/cert.crt
+cp /etc/letsencrypt/live/$DOMAIN/privkey.pem $CERT_DIR/key.key
+
+chmod 600 $CERT_DIR/key.key
