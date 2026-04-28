@@ -29,3 +29,5 @@ services:
       > /etc/nginx/nginx.conf 
       && nginx -g 'daemon off;'"
     restart: unless-stopped
+    depends_on:
+      - 3xui
