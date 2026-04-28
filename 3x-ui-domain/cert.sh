@@ -1,4 +1,4 @@
-apt-get install certbot -y
+sudo apt-get install certbot -y
 
 CERT_DIR=${PWD}/cert
 
@@ -9,4 +9,10 @@ sed -i "s|#{DOMAIN}|${SERVER_DOMAIN}|g" ./copy_certs.sh
 sudo certbot certonly \
   --standalone \
   -d ${SERVER_DOMAIN} \
-  --deploy-hook "${PWD}/copy_certs.sh"
+  -d ${ADMIN_DOMAIN} \
+  -d ${SUBSCRIPTION_DOMAIN} \
+  --deploy-hook "${PWD}/copy_certs.sh" \
+  --register-unsafely-without-email \
+  --non-interactive \
+  --agree-tos \
+  --expand

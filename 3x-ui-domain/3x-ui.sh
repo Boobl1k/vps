@@ -2,9 +2,13 @@ set -a
 source .env
 set +a
 
-echo "Dir: ${DIR}"
+ADMIN_DOMAIN=admin.${SERVER_DOMAIN}
+SUBSCRIPTION_DOMAIN=sub.${SERVER_DOMAIN}
+
 echo "Server IP: ${SERVER_IP}"
 echo "Server domain: ${SERVER_DOMAIN}"
+echo "Admin domain: ${ADMIN_DOMAIN}"
+echo "Subscription domain: ${SUBSCRIPTION_DOMAIN}"
 
 ./cert.sh
 
