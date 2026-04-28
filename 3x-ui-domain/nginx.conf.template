@@ -3,8 +3,14 @@ events {
 
 http {
     server {
+        listen 80;
+        server_name ${ADMIN_DOMAIN} ${SUBSCRIPTION_DOMAIN};
+        return 301 https://$host$request_uri;
+    }
+
+    server {
         listen 443 ssl;
-        server_name "${ADMIN_DOMAIN}";
+        server_name ${ADMIN_DOMAIN};
 
         ssl_certificate /app/cert/cert.crt;
         ssl_certificate_key /app/cert/key.key;
@@ -28,7 +34,7 @@ http {
 
     server {
         listen 443 ssl;
-        server_name "${SUBSCRIPTION_DOMAIN}";
+        server_name ${SUBSCRIPTION_DOMAIN};
 
         ssl_certificate /app/cert/cert.crt;
         ssl_certificate_key /app/cert/key.key;

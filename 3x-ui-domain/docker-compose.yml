@@ -2,7 +2,6 @@ services:
   3xui:
     image: ghcr.io/mhsanaei/3x-ui:latest
     container_name: 3xui_app
-    # hostname: yourhostname <- optional
     volumes:
       - ./3x_db:/etc/x-ui/
     environment:
@@ -17,10 +16,16 @@ services:
     container_name: 3xui_nginx
     ports:
       - "443:443"
+      - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
       - ./cert:/app/cert
     environment:
       - ADMIN_DOMAIN=${ADMIN_DOMAIN}
       - SUBSCRIPTION_DOMAIN=${SUBSCRIPTION_DOMAIN}
+    command: >
+      /bin/sh -c "envsubst 
+      < /etc/nginx/templates/nginx.conf.template 
+      > /etc/nginx/nginx.conf 
+      && nginx -g 'daemon off;'"
     restart: unless-stopped
