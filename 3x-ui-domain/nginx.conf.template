@@ -28,7 +28,7 @@ http {
             proxy_set_header If-Range $http_if_range;
 
             proxy_redirect off;
-            proxy_pass http://3xui:1011;
+            proxy_pass http://3xui:2053;
         }
     }
 
