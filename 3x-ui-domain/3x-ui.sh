@@ -15,6 +15,7 @@ sleep 5
 
 docker compose down
 
+sudo apt install sqlite3 -y
 envsubst < ./settings.sql | sudo sqlite3 ./3x_db/x-ui.db
 
 docker compose up -d
