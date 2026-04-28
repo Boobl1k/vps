@@ -4,4 +4,6 @@ INSERT INTO settings (key, value) VALUES
     ("subPath", "/sub/"),
     ("subURI", "https://${SUBSCRIPTION_DOMAIN}/sub/"),
     ("tgBotEnable", "${TG_BOT_ENABLE}"),
-    ("tgBotToken", "${TG_BOT_TOKEN}");
+    ("tgBotToken", "${TG_BOT_TOKEN}"),
+    ("subEnableRouting", "true"),
+    ("subRoutingRules", "happ://routing/add/eyJibG9ja2lwIjpbXSwiYmxvY2tzaXRlcyI6WyJnZW9zaXRlOmNhdGVnb3J5LWFkcy1hbGwiXSwiZGlyZWN0aXAiOltdLCJkaXJlY3RzaXRlcyI6W10sImRuc2hvc3RzIjp7ImNsb3VkZmxhcmUtZG5zLmNvbSI6IjEuMS4xLjEiLCJkbnMuZ29vZ2xlIjoiOC44LjguOCJ9LCJkb21haW5zdHJhdGVneSI6IklQSWZOb25NYXRjaCIsImRvbWVzdGljZG5zZG9tYWluIjoiaHR0cHM6Ly9kbnMuZ29vZ2xlL2Rucy1xdWVyeSIsImRvbWVzdGljZG5zaXAiOiI4LjguOC44IiwiZG9tZXN0aWNkbnN0eXBlIjoiRG9IIiwiZmFrZWRucyI6ZmFsc2UsImdlb2lwdXJsIjoiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3J1bmV0ZnJlZWRvbS9ydXNzaWEtYmxvY2tlZC1nZW9pcC9yZWxlYXNlL2dlb2lwLXJ1LW9ubHkuZGF0IiwiZ2Vvc2l0ZXVybCI6Imh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9ydW5ldGZyZWVkb20vcnVzc2lhLWJsb2NrZWQtZ2Vvc2l0ZS9yZWxlYXNlL2dlb3NpdGUtcnUtb25seS5kYXQiLCJnbG9iYWxwcm94eSI6ZmFsc2UsIm5hbWUiOiJSdW5GcmVEbS1CbG9AUnUoT25seSkiLCJwcm94eWlwIjpbImdlb2lwOnJ1LWJsb2NrZWQiLCJnZW9pcDpydS1ibG9ja2VkLWNvbW11bml0eSJdLCJwcm94eXNpdGVzIjpbImdlb3NpdGU6cnUtYmxvY2tlZCIsImRvbWFpbjp1YSIsImRvbWFpbjoyaXAuaW8iXSwicmVtb3RlZG5zZG9tYWluIjoiaHR0cHM6Ly9kbnMucXVhZDkubmV0L2Rucy1xdWVyeSIsInJlbW90ZWRuc2lwIjoiOS45LjkuOSIsInJlbW90ZWRuc3R5cGUiOiJEb0giLCJyb3V0ZW9yZGVyIjoiYmxvY2stZGlyZWN0LXByb3h5In0=");
