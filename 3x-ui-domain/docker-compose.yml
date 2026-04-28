@@ -20,4 +20,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./cert:/app/cert
+    environment:
+      - ADMIN_DOMAIN=${ADMIN_DOMAIN}
+      - SUBSCRIPTION_DOMAIN=${SUBSCRIPTION_DOMAIN}
     restart: unless-stopped
