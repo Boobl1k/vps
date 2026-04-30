@@ -1,6 +1,16 @@
 events {
 }
 
+server {
+    listen 80 default_server;
+    listen 443 ssl default_server;
+
+    ssl_certificate /app/cert/cert.crt;
+    ssl_certificate_key /app/cert/key.key;
+
+    return 444;
+}
+
 http {
     server {
         listen 80;
