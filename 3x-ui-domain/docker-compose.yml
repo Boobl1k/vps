@@ -4,6 +4,7 @@ services:
     container_name: 3xui_app
     volumes:
       - ./3x_db:/etc/x-ui/
+      - ./cert:/app/cert
     environment:
       XRAY_VMESS_AEAD_FORCED: "false"
       XUI_ENABLE_FAIL2BAN: "true"
