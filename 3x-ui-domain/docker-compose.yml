@@ -9,14 +9,14 @@ services:
       XUI_ENABLE_FAIL2BAN: "true"
     tty: true
     ports:
-      - "6767:6767"
+      - "6767:6767/tcp"
+      - "6767:6767/udp"
     restart: unless-stopped
   nginx:
     image: nginx:alpine
     container_name: 3xui_nginx
     ports:
       - "443:443"
-      - "80:80"
     volumes:
       - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
       - ./cert:/app/cert

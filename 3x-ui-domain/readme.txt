@@ -6,7 +6,7 @@
 6. update admin password!!!
 7. now you can create inbound and clients
 
-Inbound settings:
+Inbound settings (VLESS):
 1. port 6767 (if you need to change port, edit docker compose)
 2. security - Reality
 3. generate keys for Reality
