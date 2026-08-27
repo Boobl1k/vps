@@ -9,13 +9,11 @@ echo "Subscription domain: ${SUBSCRIPTION_DOMAIN}"
 
 ./cert.sh
 
-docker compose up -d
+docker compose up -d 3xui
 
 sleep 5
 
-docker compose down
+docker compose down 3xui
 
 sudo apt install sqlite3 -y
 envsubst < ./settings.sql | sudo sqlite3 ./3x_db/x-ui.db
-
-docker compose up -d

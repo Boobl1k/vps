@@ -1,3 +1,7 @@
+set -a
+source .env
+set +a
+
 sudo apt-get install certbot -y
 
 CERT_DIR=${PWD}/cert
