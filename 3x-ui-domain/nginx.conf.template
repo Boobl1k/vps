@@ -43,6 +43,15 @@ http {
         ssl_certificate /app/cert/cert.crt;
         ssl_certificate_key /app/cert/key.key;
 
+        # Exact root only: https://SUBSCRIPTION_DOMAIN/ -> static borscht page.
+        # alias (not root) is used to avoid an internal redirect into "location /".
+        location = / {
+            alias /usr/share/nginx/html/borscht.html;
+            default_type text/html;
+            charset utf-8;
+        }
+
+        # Everything with a path (/sub/..., /<username>, panel assets, etc.) goes to 3x-ui.
         location / {
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;

@@ -13,3 +13,7 @@ Inbound settings (VLESS):
 2. security - Reality
 3. generate keys for Reality
 4. enable Sockopt
+
+Subscription domain behavior:
+1. https://<subscription_domain>/ (no path) -> static page borscht.html (edit it and restart nginx if needed)
+2. https://<subscription_domain>/<any path>, e.g. /sub/<id> -> proxied to 3x-ui (port 2096)

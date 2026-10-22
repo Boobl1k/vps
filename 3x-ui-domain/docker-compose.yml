@@ -20,6 +20,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+      - ./borscht.html:/usr/share/nginx/html/borscht.html:ro
       - ./cert:/app/cert
     environment:
       - ADMIN_DOMAIN=${ADMIN_DOMAIN}
