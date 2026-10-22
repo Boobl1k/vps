@@ -11,8 +11,7 @@ services:
     tty: true
     ports:
       - "443:443/tcp"
-      - "6767:6767/tcp"
-      - "6767:6767/udp"
+      - "443:443/udp"
     restart: unless-stopped
   nginx:
     image: nginx:alpine
