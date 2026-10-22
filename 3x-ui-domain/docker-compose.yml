@@ -1,6 +1,6 @@
 services:
   3xui:
-    image: ghcr.io/mhsanaei/3x-ui:latest
+    image: ghcr.io/mhsanaei/3x-ui:3.7.0
     container_name: 3xui_app
     volumes:
       - ./3x_db:/etc/x-ui/
