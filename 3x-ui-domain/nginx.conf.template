@@ -46,8 +46,8 @@ http {
         # Exact root only: https://SUBSCRIPTION_DOMAIN/ -> static borscht page.
         # alias (not root) is used to avoid an internal redirect into "location /".
         location = / {
-            alias /usr/share/nginx/html/borscht.html;
-            default_type text/html;
+            root /usr/share/nginx/html;
+            rewrite ^/$ /borscht.html break;
             charset utf-8;
         }
 
