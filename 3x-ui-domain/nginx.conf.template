@@ -1,10 +1,18 @@
+worker_processes auto;
+
 events {
+    worker_connections 4096;
 }
 
 http {
     server_names_hash_bucket_size 64;
+
+    set_real_ip_from 127.0.0.1;
+    real_ip_header proxy_protocol;
+
     server {
-        listen 443 ssl default_server;
+        listen 127.0.0.1:8443 ssl proxy_protocol default_server;
+        http2 on;
 
         ssl_certificate /app/cert/cert.crt;
         ssl_certificate_key /app/cert/key.key;
@@ -13,45 +21,32 @@ http {
     }
 
     server {
-        listen 443 ssl;
+        listen 127.0.0.1:8443 ssl proxy_protocol;
+        http2 on;
         server_name ${ADMIN_DOMAIN};
 
         ssl_certificate /app/cert/cert.crt;
         ssl_certificate_key /app/cert/key.key;
 
         location / {
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_set_header Host $http_host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Range $http_range;
-            proxy_set_header If-Range $http_if_range;
-
-            proxy_redirect off;
-            proxy_pass http://3xui:2053;
+            proxy_pass http://127.0.0.1:2053;
         }
     }
 
     server {
-        listen 443 ssl;
+        listen 127.0.0.1:8443 ssl proxy_protocol;
+        http2 on;
         server_name ${SUBSCRIPTION_DOMAIN};
 
         ssl_certificate /app/cert/cert.crt;
         ssl_certificate_key /app/cert/key.key;
 
-        # Exact root only: https://SUBSCRIPTION_DOMAIN/ -> static borscht page.
-        # alias (not root) is used to avoid an internal redirect into "location /".
         location = / {
             root /usr/share/nginx/html;
             rewrite ^/$ /borscht.html break;
             charset utf-8;
         }
 
-        # Everything with a path (/sub/..., /<username>, panel assets, etc.) goes to 3x-ui.
         location / {
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -67,7 +62,7 @@ http {
             proxy_set_header If-Range $http_if_range;
 
             proxy_redirect off;
-            proxy_pass http://3xui:2096;
+            proxy_pass http://127.0.0.1:2096;
         }
     }
 }
